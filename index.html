@@ -243,6 +243,11 @@ header.scrolled{
   margin-top:44px;
   padding-left:22px;
   border-left:2px solid #B86A45;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:64px;
+  row-gap:4px;
+  max-width:1040px;
 }
 .trigger{
   display:grid;
@@ -592,6 +597,14 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
 .nav-dropdown-menu a{display:block!important;padding:12px 14px!important;white-space:nowrap;color:#171717!important;text-transform:none!important;letter-spacing:0!important;font-size:.88rem!important}
 .nav-dropdown-menu a:hover{background:rgba(23,23,23,.06)}
 .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:760px){
+  .trigger-grid{
+    grid-template-columns:1fr;
+    column-gap:0;
+  }
+}
+
 </style>
 </head>
 <body>
