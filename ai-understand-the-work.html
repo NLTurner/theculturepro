@@ -12,9 +12,162 @@ header{background:#243b43;color:#fff;padding:24px 0}.nav{display:flex;justify-co
 footer{background:#0f0f0f;color:#aaa;padding:36px 0}.foot{display:flex;justify-content:space-between;gap:30px}.foot b{font:normal 25px Georgia,serif;color:#fff}
 @media(max-width:800px){.links a:not(:last-child){display:none}.wrap{width:calc(100% - 40px)}}
 </style>
+<style>
+/* ===== Unified The Culture Pro® site navigation ===== */
+.tcp-header{
+  background:#171717;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  position:relative;
+  z-index:1000;
+}
+.tcp-nav{
+  width:min(1180px,calc(100% - 52px));
+  margin:0 auto;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.tcp-logo{
+  color:#fff !important;
+  text-decoration:none !important;
+  font-family:"Libre Caslon Display",Georgia,serif;
+  font-size:1.55rem;
+  line-height:1;
+  white-space:nowrap;
+}
+.tcp-logo sup{font-size:.45em;vertical-align:super}
+.tcp-links{
+  display:flex;
+  align-items:center;
+  gap:25px;
+  font-family:"DM Sans",Arial,sans-serif;
+  font-size:.77rem;
+}
+.tcp-links>a,.tcp-trigger{
+  color:#fff !important;
+  text-decoration:none !important;
+  white-space:nowrap;
+}
+.tcp-cta{
+  border:1px solid rgba(255,255,255,.46);
+  padding:11px 15px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:.68rem;
+}
+.tcp-navitem{position:relative}
+.tcp-trigger{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tcp-trigger:after{content:"⌄";font-size:.78em}
+.tcp-dropdown{
+  position:absolute;
+  top:calc(100% + 17px);
+  left:-18px;
+  min-width:290px;
+  background:#fbf9f5;
+  color:#171717;
+  border:1px solid rgba(23,23,23,.12);
+  padding:8px;
+  box-shadow:0 18px 40px rgba(0,0,0,.17);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-4px);
+  transition:.18s ease;
+  z-index:1100;
+}
+.tcp-dropdown a{
+  display:block;
+  color:#171717 !important;
+  text-decoration:none !important;
+  padding:11px 12px;
+  line-height:1.3;
+}
+.tcp-dropdown a:hover,.tcp-dropdown a:focus{background:#f1ece4}
+.tcp-navitem:hover .tcp-dropdown,
+.tcp-navitem:focus-within .tcp-dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.tcp-mobile{display:none;position:relative}
+.tcp-mobile summary{
+  list-style:none;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.46);
+  padding:9px 12px;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font:600 .7rem "DM Sans",Arial,sans-serif;
+}
+.tcp-mobile summary::-webkit-details-marker{display:none}
+.tcp-mobile-panel{
+  position:absolute;
+  right:0;
+  top:calc(100% + 10px);
+  width:min(310px,calc(100vw - 36px));
+  background:#fbf9f5;
+  color:#171717;
+  border:1px solid rgba(23,23,23,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.17);
+  padding:8px;
+  z-index:1200;
+}
+.tcp-mobile-panel a,.tcp-mobile-label{
+  display:block;
+  color:#171717 !important;
+  text-decoration:none !important;
+  padding:10px 12px;
+  font:500 .82rem "DM Sans",Arial,sans-serif;
+}
+.tcp-mobile-label{font-weight:700;padding-bottom:4px}
+.tcp-mobile-panel .tcp-sub{padding-left:24px}
+@media(max-width:900px){
+  .tcp-nav{width:calc(100% - 36px);min-height:66px}
+  .tcp-links{display:none !important}
+  .tcp-mobile{display:block}
+}
+</style>
 </head>
 <body>
-<header><div class="wrap nav"><div class="brand">The Culture Pro®</div><div class="links"><a href="#">What We Do</a><a href="#">How We Think</a><a href="TCP_insights_v1.html">Insights</a><a href="#">Start a Conversation</a></div></div></header>
+<header class="tcp-header">
+  <div class="tcp-nav">
+    <a class="tcp-logo" href="index.html">The Culture Pro<sup>®</sup></a>
+    <nav class="tcp-links" aria-label="Primary">
+      <div class="tcp-navitem">
+        <a class="tcp-trigger" href="index.html#what-we-do">What We Do</a>
+        <div class="tcp-dropdown">
+          <a href="organizational-effectiveness.html">Organizational Effectiveness</a>
+          <a href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
+          <a href="facilitation-speaking.html">Facilitation + Speaking</a>
+          <a href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
+        </div>
+      </div>
+      <a href="inside-out-transformation.html">How We Think</a>
+      <a href="insights.html">Insights</a>
+      <a class="tcp-cta" href="contact.html">Start a Conversation</a>
+    </nav>
+    <details class="tcp-mobile">
+      <summary>Menu</summary>
+      <div class="tcp-mobile-panel">
+        <span class="tcp-mobile-label">What We Do</span>
+        <a class="tcp-sub" href="organizational-effectiveness.html">Organizational Effectiveness</a>
+        <a class="tcp-sub" href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
+        <a class="tcp-sub" href="facilitation-speaking.html">Facilitation + Speaking</a>
+        <a class="tcp-sub" href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
+        <a href="inside-out-transformation.html">How We Think</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html">Start a Conversation</a>
+      </div>
+    </details>
+  </div>
+</header>
 
 <section class="hero"><div class="wrap">
 <div class="meta">AI + Organizational Effectiveness · Nicole L. Turner</div>
