@@ -639,6 +639,20 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
   font-size:.88rem;
 }
 
+
+#homeFormStatus{
+  display:none;
+  margin-top:22px;
+  padding:18px 20px;
+  border:1px solid rgba(255,255,255,.32);
+  font-family:"DM Sans",Arial,sans-serif;
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.45;
+  letter-spacing:0;
+  color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -975,6 +989,7 @@ if(otherInterest){otherInterest.addEventListener('change',()=>otherField.classLi
         if (otherText) otherText.required = false;
         statusBox.textContent = 'Thank you. Your inquiry has been received.';
         statusBox.style.display = 'block';
+        statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         statusBox.textContent = 'Your message could not be sent. Please try again.';
         statusBox.style.display = 'block';
