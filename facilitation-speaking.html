@@ -23,37 +23,161 @@ header{height:78px;border-bottom:1px solid rgba(255,255,255,.16);position:absolu
 .contact{background:#171717;color:#fff;padding:66px 0}.contact h2{font-family:"Libre Caslon Display",Georgia,serif;font-size:clamp(2.8rem,4.5vw,4.6rem);font-weight:400;line-height:1;max-width:900px;margin:10px 0 18px}.contact p{max-width:740px;color:#ccc5bb}.contact .button{color:#171717;background:#fff;border-color:#fff}
 .footer{background:#0F0F0F;color:#aaa;padding:38px 0}.footer-row{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}.footer-logo{font-family:"Libre Caslon Display",Georgia,serif;font-size:1.7rem;color:#fff}.footer p{margin:8px 0 0;max-width:700px;font-size:.82rem}.footer-links{display:flex;gap:18px;font-size:.77rem;flex-wrap:wrap;justify-content:flex-end}
 @media(max-width:900px){.navlinks{display:none}.mobile-menu{display:block}.grid{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.container{width:min(var(--max),calc(100% - 44px))}}@media(max-width:640px){.grid,.list{grid-template-columns:1fr}.section{padding:54px 0}.hero{padding-top:132px}.footer-row{display:block}.footer-links{justify-content:flex-start;margin-top:20px}}
-</style></head><body>
-<header><div class="container nav">
-<a class="logo" href="index.html">The Culture Pro<sup>®</sup></a>
-<nav class="navlinks" aria-label="Primary">
-  <div class="nav-item">
-    <a class="nav-trigger" href="index.html#what-we-do">What We Do</a>
-    <div class="dropdown">
-      <a href="organizational-effectiveness.html">Organizational Effectiveness</a>
-      <a href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
-      <a href="facilitation-speaking.html">Facilitation + Speaking</a>
-      <a href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
-    </div>
+</style><style>
+/* ===== Unified The Culture Pro® site navigation ===== */
+.tcp-header{
+  background:#171717;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  position:relative;
+  z-index:1000;
+}
+.tcp-nav{
+  width:min(1180px,calc(100% - 52px));
+  margin:0 auto;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.tcp-logo{
+  color:#fff !important;
+  text-decoration:none !important;
+  font-family:"Libre Caslon Display",Georgia,serif;
+  font-size:1.55rem;
+  line-height:1;
+  white-space:nowrap;
+}
+.tcp-logo sup{font-size:.45em;vertical-align:super}
+.tcp-links{
+  display:flex;
+  align-items:center;
+  gap:25px;
+  font-family:"DM Sans",Arial,sans-serif;
+  font-size:.77rem;
+}
+.tcp-links>a,.tcp-trigger{
+  color:#fff !important;
+  text-decoration:none !important;
+  white-space:nowrap;
+}
+.tcp-cta{
+  border:1px solid rgba(255,255,255,.46);
+  padding:11px 15px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:.68rem;
+}
+.tcp-navitem{position:relative}
+.tcp-trigger{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tcp-trigger:after{content:"⌄";font-size:.78em}
+.tcp-dropdown{
+  position:absolute;
+  top:calc(100% + 17px);
+  left:-18px;
+  min-width:290px;
+  background:#fbf9f5;
+  color:#171717;
+  border:1px solid rgba(23,23,23,.12);
+  padding:8px;
+  box-shadow:0 18px 40px rgba(0,0,0,.17);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-4px);
+  transition:.18s ease;
+  z-index:1100;
+}
+.tcp-dropdown a{
+  display:block;
+  color:#171717 !important;
+  text-decoration:none !important;
+  padding:11px 12px;
+  line-height:1.3;
+}
+.tcp-dropdown a:hover,.tcp-dropdown a:focus{background:#f1ece4}
+.tcp-navitem:hover .tcp-dropdown,
+.tcp-navitem:focus-within .tcp-dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.tcp-mobile{display:none;position:relative}
+.tcp-mobile summary{
+  list-style:none;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.46);
+  padding:9px 12px;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font:600 .7rem "DM Sans",Arial,sans-serif;
+}
+.tcp-mobile summary::-webkit-details-marker{display:none}
+.tcp-mobile-panel{
+  position:absolute;
+  right:0;
+  top:calc(100% + 10px);
+  width:min(310px,calc(100vw - 36px));
+  background:#fbf9f5;
+  color:#171717;
+  border:1px solid rgba(23,23,23,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.17);
+  padding:8px;
+  z-index:1200;
+}
+.tcp-mobile-panel a,.tcp-mobile-label{
+  display:block;
+  color:#171717 !important;
+  text-decoration:none !important;
+  padding:10px 12px;
+  font:500 .82rem "DM Sans",Arial,sans-serif;
+}
+.tcp-mobile-label{font-weight:700;padding-bottom:4px}
+.tcp-mobile-panel .tcp-sub{padding-left:24px}
+@media(max-width:900px){
+  .tcp-nav{width:calc(100% - 36px);min-height:66px}
+  .tcp-links{display:none !important}
+  .tcp-mobile{display:block}
+}
+</style>
+</head><body>
+<header class="tcp-header">
+  <div class="tcp-nav">
+    <a class="tcp-logo" href="index.html">The Culture Pro<sup>®</sup></a>
+    <nav class="tcp-links" aria-label="Primary">
+      <div class="tcp-navitem">
+        <a class="tcp-trigger" href="index.html#what-we-do">What We Do</a>
+        <div class="tcp-dropdown">
+          <a href="organizational-effectiveness.html">Organizational Effectiveness</a>
+          <a href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
+          <a href="facilitation-speaking.html">Facilitation + Speaking</a>
+          <a href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
+        </div>
+      </div>
+      <a href="inside-out-transformation.html">How We Think</a>
+      <a href="insights.html">Insights</a>
+      <a class="tcp-cta" href="contact.html">Start a Conversation</a>
+    </nav>
+    <details class="tcp-mobile">
+      <summary>Menu</summary>
+      <div class="tcp-mobile-panel">
+        <span class="tcp-mobile-label">What We Do</span>
+        <a class="tcp-sub" href="organizational-effectiveness.html">Organizational Effectiveness</a>
+        <a class="tcp-sub" href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
+        <a class="tcp-sub" href="facilitation-speaking.html">Facilitation + Speaking</a>
+        <a class="tcp-sub" href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
+        <a href="inside-out-transformation.html">How We Think</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html">Start a Conversation</a>
+      </div>
+    </details>
   </div>
-  <a href="inside-out-transformation.html">How We Think</a>
-  <a href="insights.html">Insights</a>
-  <a class="cta" href="contact.html">Start a Conversation</a>
-</nav>
-<details class="mobile-menu">
-  <summary>Menu</summary>
-  <div class="mobile-panel">
-    <span class="mobile-label">What We Do</span>
-    <a class="sub" href="organizational-effectiveness.html">Organizational Effectiveness</a>
-    <a class="sub" href="strategic-executive-advisory.html">Strategic &amp; Executive Advisory</a>
-    <a class="sub" href="facilitation-speaking.html">Facilitation + Speaking</a>
-    <a class="sub" href="workforce-leadership-training.html">Workforce &amp; Leadership Training</a>
-    <a href="inside-out-transformation.html">How We Think</a>
-    <a href="insights.html">Insights</a>
-    <a href="contact.html">Start a Conversation</a>
-  </div>
-</details>
-</div></header>
+</header>
 <main>
 <section class="hero"><div class="container"><div class="eyebrow">Facilitation + Speaking</div><h1>Create the conversation that moves the work.</h1><p>Nicole L. Turner helps organizations create conversations and experiences that challenge assumptions, sharpen thinking, support better decisions, and create movement.</p><a class="button light" href="contact.html">Start a Conversation</a></div></section>
 <section class="section"><div class="container"><div class="split"><div><div class="kicker">Facilitation</div><h2>Important conversations deserve more than an agenda.</h2><p class="copy">Executive sessions, retreats, planning conversations, and other consequential meetings should produce something that could not have happened through another routine meeting.</p><p class="copy">Nicole designs and facilitates sessions around what the organization needs the room to accomplish.</p></div><div><div class="kicker">Speaking</div><h2>Ideas that change what people see.</h2><p class="copy">Nicole brings original thinking, observation, and practical application to audiences in ways that make complex ideas understandable and relevant.</p><p class="copy">Speaking engagements are shaped around the audience, occasion, and outcome rather than a narrow list of preset topics.</p></div></div></div></section>
@@ -61,4 +185,4 @@ header{height:78px;border-bottom:1px solid rgba(255,255,255,.16);position:absolu
 <section class="section"><div class="container"><div class="kicker">Designed for the moment</div><h2>Start with what needs to happen in the room.</h2><p class="copy">Keynotes, executive sessions, workshops, retreats, strategic conversations, and custom experiences can all be designed around the people in the room and what the organization wants the experience to accomplish.</p></div></section>
 <section class="contact" id="contact"><div class="container"><div class="kicker">Bring Nicole L. Turner into the room</div><h2>What should be different because people were there?</h2><p>Tell us about the audience, the moment, and what you want the experience to accomplish.</p><a class="button" href="contact.html">Start the Conversation</a></div></section>
 </main>
-<footer class="footer"><div class="container footer-row"><div><div class="footer-logo">The Culture Pro<sup>®</sup></div><p>Helping organizations understand what is producing current results and determine what needs to change.</p></div><div class="footer-links"><a href="TCP_organizational-effectiveness_v2.html">Organizational Effectiveness</a><a href="TCP_strategic-executive-advisory_v2.html">Advisory</a><a href="TCP_facilitation-speaking_v2.html">Facilitation + Speaking</a><a href="TCP_workforce-leadership-training_v2.html">Training</a></div></div></footer></body></html>
+<footer class="footer"><div class="container footer-row"><div><div class="footer-logo">The Culture Pro<sup>®</sup></div><p>Helping organizations understand what is producing current results and determine what needs to change.</p></div><div class="footer-links"><a href="organizational-effectiveness.html">Organizational Effectiveness</a><a href="strategic-executive-advisory.html">Advisory</a><a href="facilitation-speaking.html">Facilitation + Speaking</a><a href="workforce-leadership-training.html">Training</a></div></div></footer></body></html>
