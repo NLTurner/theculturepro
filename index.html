@@ -631,6 +631,14 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
   outline-offset:4px;
 }
 
+
+#homeFormStatus{
+  display:none;
+  margin-top:12px;
+  color:#fff;
+  font-size:.88rem;
+}
+
 </style>
 </head>
 <body>
@@ -843,7 +851,7 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
       <h2>Let’s talk about what your organization needs to accomplish.</h2>
       <p>Tell us a little about your organization and what you would like to accomplish.</p>
     </div>
-    <form class="contact-form" action="#" method="POST">
+    <form id="homeContactForm" class="contact-form" action="https://formspree.io/f/xwlkdqnd" method="POST">
       <div class="form-grid">
         <label>Name *<input type="text" name="name" required></label>
         <label>Work Email *<input type="email" name="email" required></label>
@@ -852,18 +860,19 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
         <label class="full">Title / Role<input type="text" name="title"></label>
       </div>
       <fieldset><legend>Area(s) of Interest *</legend>
-        <label><input type="checkbox" name="interest" value="Organizational Effectiveness"> Organizational Effectiveness</label>
-        <label><input type="checkbox" name="interest" value="Strategic & Executive Advisory"> Strategic &amp; Executive Advisory</label>
-        <label><input type="checkbox" name="interest" value="Facilitation"> Facilitation</label>
-        <label><input type="checkbox" name="interest" value="Speaking"> Speaking</label>
-        <label><input type="checkbox" name="interest" value="Workforce & Leadership Training"> Workforce &amp; Leadership Training</label>
-        <label><input type="checkbox" id="otherInterest" name="interest" value="Other"> Other</label>
+        <label><input type="checkbox" name="areas_of_interest" value="Organizational Effectiveness"> Organizational Effectiveness</label>
+        <label><input type="checkbox" name="areas_of_interest" value="Strategic & Executive Advisory"> Strategic &amp; Executive Advisory</label>
+        <label><input type="checkbox" name="areas_of_interest" value="Facilitation"> Facilitation</label>
+        <label><input type="checkbox" name="areas_of_interest" value="Speaking"> Speaking</label>
+        <label><input type="checkbox" name="areas_of_interest" value="Workforce & Leadership Training"> Workforce &amp; Leadership Training</label>
+        <label><input type="checkbox" id="otherInterest" name="areas_of_interest" value="Other"> Other</label>
         <label class="other-field" id="otherField">Please specify<input type="text" name="other_interest"></label>
       </fieldset>
       <label>How can The Culture Pro® help? *<textarea name="message" rows="6" required></textarea></label>
       <label>How did you hear about The Culture Pro®?<select name="referral"><option value="">Select one</option><option>Referral</option><option>Search / Google</option><option>LinkedIn</option><option>Conference / Event</option><option>Previous Engagement</option><option>Other</option></select></label>
-      <button class="cta light" type="submit">Start the Conversation</button>
-      <div class="form-success" id="formSuccess" role="status">Thank you. Your inquiry has been received.</div>
+      <input type="hidden" name="_subject" value="New The Culture Pro® inquiry">
+      <button class="cta light" id="homeSubmitBtn" type="submit">Start the Conversation</button>
+      <div class="form-success" id="homeFormStatus" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -915,5 +924,71 @@ const otherInterest=document.getElementById('otherInterest');
 const otherField=document.getElementById('otherField');
 if(otherInterest){otherInterest.addEventListener('change',()=>otherField.classList.toggle('show',otherInterest.checked));}
 </script>
+
+<script>
+(() => {
+  const form = document.getElementById('homeContactForm');
+  if (!form) return;
+
+  const submitBtn = document.getElementById('homeSubmitBtn');
+  const statusBox = document.getElementById('homeFormStatus');
+  const otherCheck = document.getElementById('otherInterest');
+  const otherField = document.getElementById('otherField');
+  const otherText = otherField ? otherField.querySelector('input[name="other_interest"]') : null;
+
+  if (otherCheck && otherField) {
+    otherCheck.addEventListener('change', () => {
+      const show = otherCheck.checked;
+      otherField.classList.toggle('show', show);
+      if (otherText) {
+        otherText.required = show;
+        if (!show) otherText.value = '';
+      }
+    });
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const checked = form.querySelectorAll('input[name="areas_of_interest"]:checked');
+    if (!checked.length) {
+      statusBox.textContent = 'Please select at least one area of interest.';
+      statusBox.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    statusBox.style.display = 'none';
+    statusBox.textContent = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        if (otherField) otherField.classList.remove('show');
+        if (otherText) otherText.required = false;
+        statusBox.textContent = 'Thank you. Your inquiry has been received.';
+        statusBox.style.display = 'block';
+      } else {
+        statusBox.textContent = 'Your message could not be sent. Please try again.';
+        statusBox.style.display = 'block';
+      }
+    } catch (error) {
+      statusBox.textContent = 'Your message could not be sent. Please try again.';
+      statusBox.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Start the Conversation';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
