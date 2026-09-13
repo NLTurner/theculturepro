@@ -605,6 +605,32 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
   }
 }
 
+
+/* Homepage problem-section spacing refinement */
+.problem-section{
+  padding-bottom:72px !important;
+}
+@media(max-width:760px){
+  .problem-section{
+    padding-bottom:58px !important;
+  }
+}
+
+
+.article-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+  height:100%;
+}
+.article-link .article{
+  height:100%;
+}
+.article-link:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:4px;
+}
+
 </style>
 </head>
 <body>
@@ -677,7 +703,7 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
   </div>
 </div>
 
-<section class="section border">
+<section class="section border problem-section">
   <div class="container intro-grid reveal">
     <div>
       <div class="eyebrow">The question before the solution</div>
@@ -792,16 +818,20 @@ footer{background:#0E0E0E;color:white;padding:70px 0 28px}
       <a class="textlink" href="insights.html">View all insights</a>
     </div>
     <div class="insight-grid reveal two-articles">
+      <a class="article-link" href="diagnosis-before-prescription.html" aria-label="Read Most Organizations Skip the Diagnosis and Go Straight to the Prescription">
       <article class="article featured">
         <div class="tag">Organizational Diagnosis</div>
         <h3>Most Organizations Skip the Diagnosis and Go Straight to the Prescription</h3>
         <p>Most organizations have no shortage of people capable of solving problems. What they often lack is a process for determining whether they are solving the right one.</p>
       </article>
+      </a>
+      <a class="article-link" href="ai-understand-the-work.html" aria-label="Read AI is Changing the Work, but Do We Understand the Work We're Changing?">
       <article class="article">
         <div class="tag">AI + Organizational Effectiveness</div>
         <h3>AI is Changing the Work, but Do We Understand the Work We're Changing?</h3>
         <p>Before organizations automate work with AI, they need to understand how work actually moves through the organization.</p>
       </article>
+      </a>
     </div>
   </div>
 </section>
