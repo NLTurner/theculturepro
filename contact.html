@@ -98,7 +98,21 @@
       .hero{padding:72px 0 58px}
       .section{padding:56px 0}
     }
-  </style>
+  
+/* Contact form confirmation */
+#status.success{
+  display:none;
+  margin-top:22px;
+  padding:18px 20px;
+  border:1px solid rgba(47,118,111,.38);
+  font-family:"DM Sans",Arial,sans-serif;
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.45;
+  letter-spacing:0;
+}
+
+</style>
 <style>
 /* ===== Unified The Culture Pro® site navigation ===== */
 .tcp-header{
@@ -399,6 +413,7 @@
           statusBox.className = 'status success';
           statusBox.textContent = 'Thank you. Your inquiry has been received.';
           statusBox.style.display = 'block';
+          statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           statusBox.className = 'status error';
           statusBox.textContent = 'Your message could not be sent. Please try again.';
